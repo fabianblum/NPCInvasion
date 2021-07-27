@@ -1,27 +1,8 @@
-﻿using AtomicTorch.CBND.CoreMod.Items.Weapons;
-using AtomicTorch.CBND.CoreMod.SoundPresets;
-using AtomicTorch.CBND.CoreMod.Systems.Weapons;
+﻿using AtomicTorch.CBND.CoreMod.Systems.Weapons;
 using AtomicTorch.CBND.GameApi.Data.Characters;
 using AtomicTorch.CBND.GameApi.Data.Items;
 using System;
 using System.Threading.Tasks;
-
-
-    using System.Collections.Generic;
-    using System.Linq;
-    using AtomicTorch.CBND.CoreMod.Characters;
-    using AtomicTorch.CBND.CoreMod.Characters.Player;
-    using AtomicTorch.CBND.CoreMod.Items.Ammo;
-    using AtomicTorch.CBND.CoreMod.Items.Weapons;
-    using AtomicTorch.CBND.CoreMod.SoundPresets;
-    using AtomicTorch.CBND.CoreMod.StaticObjects;
-    using AtomicTorch.CBND.CoreMod.Systems.Notifications;
-    using AtomicTorch.CBND.CoreMod.Vehicles;
-    using AtomicTorch.CBND.GameApi.Data.Characters;
-    using AtomicTorch.CBND.GameApi.Data.Items;
-    using AtomicTorch.CBND.GameApi.Data.State;
-    using AtomicTorch.CBND.GameApi.Scripting;
-    using AtomicTorch.CBND.GameApi.Scripting.Network;
 
 namespace AtomicTorch.CBND.CoreMod.Characters
 {
