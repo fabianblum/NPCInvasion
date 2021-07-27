@@ -84,7 +84,7 @@
 			out IEnumerable<IProtoItemAmmo> compatibleAmmoProtos,
 			ref DamageDescription overrideDamageDescription)
         {
-            compatibleAmmoProtos = null;
+            compatibleAmmoProtos = GetAmmoOfType<IAmmoGrenadeForGrenadeLauncher>(); ;
 
             var damageDistribution = new DamageDistribution()
                                      .Set(DamageType.Explosion, 1.0);

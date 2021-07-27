@@ -441,6 +441,13 @@
                                     ? null
                                     : GetPrivateState(weaponCache.Weapon).CurrentProtoItemAmmo;
 
+            if(weaponCache.ProtoWeapon.GetType() == typeof(AtomicTorch.CBND.CoreMod.Items.Weapons.MobWeapons.ItemWeaponMobGrenadeLauncher))
+            {
+                protoItemAmmo = Api.GetProtoEntity<ItemAmmoGrenadeHE>();
+            }
+
+            
+
             if (IsServer)
             {
                 protoItemAmmo?.ServerOnObjectHit(weaponCache,
