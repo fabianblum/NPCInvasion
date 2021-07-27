@@ -106,17 +106,6 @@
             // cannot auto-aggro
         }
 		
-        
-
-        
-        protected void playSound(WeaponState weaponState, bool reloadFinish, IWorldObject character)
-        {
-            var itemWeapon = weaponState.ItemWeapon;
-            var protoWeapon = (IProtoItemWeapon)itemWeapon.ProtoItem;
-            protoWeapon.SoundPresetWeapon.PlaySound(reloadFinish ? WeaponSound.ReloadFinished : WeaponSound.Reload,
-                                                   character,
-                                                   volume: SoundConstants.VolumeWeapon);
-        }
 
 	}
 }

@@ -1,5 +1,27 @@
-﻿using System;
+﻿using AtomicTorch.CBND.CoreMod.Items.Weapons;
+using AtomicTorch.CBND.CoreMod.SoundPresets;
+using AtomicTorch.CBND.CoreMod.Systems.Weapons;
+using AtomicTorch.CBND.GameApi.Data.Characters;
+using AtomicTorch.CBND.GameApi.Data.Items;
+using System;
 using System.Threading.Tasks;
+
+
+    using System.Collections.Generic;
+    using System.Linq;
+    using AtomicTorch.CBND.CoreMod.Characters;
+    using AtomicTorch.CBND.CoreMod.Characters.Player;
+    using AtomicTorch.CBND.CoreMod.Items.Ammo;
+    using AtomicTorch.CBND.CoreMod.Items.Weapons;
+    using AtomicTorch.CBND.CoreMod.SoundPresets;
+    using AtomicTorch.CBND.CoreMod.StaticObjects;
+    using AtomicTorch.CBND.CoreMod.Systems.Notifications;
+    using AtomicTorch.CBND.CoreMod.Vehicles;
+    using AtomicTorch.CBND.GameApi.Data.Characters;
+    using AtomicTorch.CBND.GameApi.Data.Items;
+    using AtomicTorch.CBND.GameApi.Data.State;
+    using AtomicTorch.CBND.GameApi.Scripting;
+    using AtomicTorch.CBND.GameApi.Scripting.Network;
 
 namespace AtomicTorch.CBND.CoreMod.Characters
 {
@@ -37,11 +59,13 @@ namespace AtomicTorch.CBND.CoreMod.Characters
                 if (reloadTimer is null && weaponState.SharedGetInputIsFiring())
                 {
                     reloadTimer = Task.Delay(fireTime).ContinueWith(t => setIsReloading(true));
+                    Task.Delay(fireTime).ContinueWith(t => playSound(weaponState, false, character));
                 }
 
                 if (reloadTimer is not null && isReloading)
                 {
                     Task.Delay(reloadTime).ContinueWith(t => setIsReloading(false));
+                    Task.Delay(reloadTime).ContinueWith(t => playSound(weaponState, true, character));
                     reloadTimer = null;
                 }
             }
@@ -65,6 +89,19 @@ namespace AtomicTorch.CBND.CoreMod.Characters
         protected void setIsReloading(bool IsReloading)
         {
             isReloading = IsReloading;
+        }
+
+        protected void playSound(WeaponState weaponState, bool reloadFinish, ICharacter character)
+        {
+
+            if (reloadFinish)
+            {
+                WeaponAmmoSystem.playReloadSoundFinished(weaponState, character);
+            }
+            else
+            {
+                WeaponAmmoSystem.playReloadSound(weaponState, character);
+            }
         }
     }
 }
