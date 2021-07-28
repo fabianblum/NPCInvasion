@@ -49,6 +49,10 @@
 
         public override double EnemyToFarDistance => 14;
 
+        public override bool RetreatWhenReloading => true;
+
+        public override double RetreatingHealthPercentage => 50.0;
+
 
 
         private ItemWeaponMobThumperNormalAttack weaponProtoNormalAttack;

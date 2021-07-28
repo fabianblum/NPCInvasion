@@ -18,6 +18,10 @@ namespace AtomicTorch.CBND.CoreMod.Characters
 
         public virtual double EnemyToFarDistance => 14;
 
+        public virtual bool RetreatWhenReloading => true;
+
+        public virtual double RetreatingHealthPercentage => 50.0;
+
         protected override void ServerUpdateMob(ServerUpdateData data)
         {
             var character = data.GameObject;
@@ -54,7 +58,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
             ServerNpcAiHelper.ProcessAggressiveAi(
                 character,
                 targetCharacter: closestTarget,
-                isRetreating: currentStats.HealthCurrent < currentStats.HealthMax / 1.75 || isReloading,
+                isRetreating: currentStats.HealthCurrent < currentStats.HealthMax * (RetreatingHealthPercentage / 100) || RetreatWhenReloading,
                 isRetreatingForHeavyVehicles: false,
                 distanceRetreat: RetreatDistance,
                 distanceEnemyTooClose: EnemyToCloseDistance,
