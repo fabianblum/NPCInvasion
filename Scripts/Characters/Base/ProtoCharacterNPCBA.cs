@@ -58,7 +58,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
             ServerNpcAiHelper.ProcessAggressiveAi(
                 character,
                 targetCharacter: closestTarget,
-                isRetreating: currentStats.HealthCurrent < currentStats.HealthMax * (RetreatingHealthPercentage / 100) || RetreatWhenReloading,
+                isRetreating: currentStats.HealthCurrent < currentStats.HealthMax * (RetreatingHealthPercentage / 100) || (RetreatWhenReloading && isReloading),
                 isRetreatingForHeavyVehicles: false,
                 distanceRetreat: RetreatDistance,
                 distanceEnemyTooClose: EnemyToCloseDistance,
