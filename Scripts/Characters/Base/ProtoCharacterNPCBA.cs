@@ -36,7 +36,7 @@ namespace AtomicTorch.CBND.CoreMod.Characters
             var weaponState = privateState.WeaponState;
             var weapon = weaponState.ProtoWeapon;
 
-            ushort ammoConsumptionPerShot = weapon.AmmoConsumptionPerShot == 0 ? 1 : weapon.AmmoConsumptionPerShot;
+            int ammoConsumptionPerShot = Convert.ToInt32(Math.Floor(weapon.AmmoConsumptionPerShot == 0 ? 1 : weapon.AmmoConsumptionPerShot));
             int reloadTime = Convert.ToInt32(Math.Floor(weapon.AmmoReloadDuration)) * 1000; 
             int fireTime = Convert.ToInt32(Math.Floor(weapon.VirtualAmmoCapacity / ammoConsumptionPerShot * weapon.FireInterval)) * 1000;
 
